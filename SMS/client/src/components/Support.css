@@ -1,0 +1,7 @@
+.support_const_info h1 {
+    text-align: center;
+}
+
+.support_const_info td {
+    border-bottom: 1px dotted solid black;
+}

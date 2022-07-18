@@ -1,0 +1,69 @@
+  img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: -1;
+  }
+
+  .Login {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    object-fit: contain;
+  }
+  
+  input[type="text"],
+  input[type="password"] {
+    height: 25px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+  }
+  
+  button {
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 15px;
+    background: #011f5b;;
+    border: 1px solid #011f5b;;
+    color: #fff;
+    padding: 10px 20px;
+  }
+  
+  button:hover {
+    background: #01369e;;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .login-form {
+    background-color: white;
+    padding: 2rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  
+  .list-container {
+    display: flex;
+  }
+  
+  .error {
+    color: red;
+    font-size: 12px;
+  }
+  
+  .title {
+    font-size: 25px;
+    margin-bottom: 20px;
+  }
+  
+  .input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 10px;
+  }
