@@ -1,0 +1,14 @@
+.openCourse {
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 15px;
+    background: #fff;
+    border: 1px solid #fff;
+    color: #000;
+    padding: 10px 20px;
+}
+
+.openCourse:hover {
+    background: #fff;
+    color: #990000
+}
