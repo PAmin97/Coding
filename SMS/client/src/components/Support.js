@@ -50,6 +50,7 @@ function Support() {
                     </tr>
                 </tbody>
             </table>
+            <h1>Submit a Ticket</h1>
             <form>
                 <input
                     type="email"

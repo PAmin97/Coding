@@ -3,5 +3,15 @@
 }
 
 .support_const_info td {
+    font-size: large;
     border-bottom: 1px dotted solid black;
+}
+
+.support_const_info input {
+    width: 100px;
+    min-height: 20px;
+    max-height: 100px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    border: 1px solid black;
 }
