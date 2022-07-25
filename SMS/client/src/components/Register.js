@@ -6,6 +6,7 @@ import "./Register.css";
 function Register() {
   const [courseList, setCourseList] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [form, setForm] = useState(false);
 
   useEffect(() => {
     axios.get("http://localhost:3001/manageCourses").then((response) => {
@@ -43,25 +44,38 @@ function Register() {
     </div>
   );
 
+  const defaultForm = (
+    <div className="deafult-form-container">
+      <img
+      className="register-image"
+      src="/images/SMS-Register.jpeg" 
+      alt="Logan Hall on Penn Campus" />
+    </div>
+  );
+
   return (
     <div className="register_container">
       <NavBar />
+      <div className="form">{form ? courseDescription : defaultForm};</div>
       <input
-        type="text"
-        placeholder="Search By CRN..."
-        onChange={(event) => {
-          setSearchTerm(event.target.value);
-        }}
-      />
-      {courseList.filter(filterFunction).map((value, key) => {
-        return (
-          <div className="course" key={key}>
-            <button className="openCourse" onClick={courseDescription}>
-              {value.CRN} {value.courseName}
-            </button>
-          </div>
-        );
-      })}
+          className="search-bar"
+          type="text"
+          placeholder="Search Courses..."
+          onChange={(event) => {
+            setSearchTerm(event.target.value);
+          }}
+        />
+      <div className="courses">
+        {courseList.filter(filterFunction).map((value, key) => {
+          return (
+            <div className="course">
+              <button className="openCourse" onClick={() => setForm(true)}>
+                {value.CRN} {value.courseName}
+              </button>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

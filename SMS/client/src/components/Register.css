@@ -12,3 +12,44 @@
     background: #fff;
     color: #990000
 }
+
+/* .register-container {
+    display: flex;
+}
+
+.register-child {
+    flex: 1;
+    border: 2px solid yellow;
+}  
+
+.register-child:first-child {
+    margin-right: 20px;
+}  */
+
+.register-container {
+    display: flex;
+}
+
+.search-bar {
+    float:inline-start;
+    width: 39%;
+    padding: 2px;
+    margin-top: 15px;
+}
+
+.courses {
+    width: 39%;
+    float: left;
+}
+
+.form {
+    width: 60%;
+    float: right;
+}
+
+.register-image {
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    object-fit:fill;
+}
