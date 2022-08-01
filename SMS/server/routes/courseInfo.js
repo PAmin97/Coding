@@ -8,5 +8,11 @@ router.get('/:courseID', async (req, res) => {
     res.json(course);
 });
 
+router.post('/', async (req, res) => {
+    const courseInfo = req.body;
+    await CourseInfo.create(courseInfo);
+    res.json(courseInfo)
+});
+
 
 module.exports = router;
