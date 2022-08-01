@@ -11,7 +11,7 @@ function Register() {
   useEffect(() => {
     axios.get("http://localhost:3001/manageCourses").then((response) => {
       setCourseList(response.data);
-    });
+    })
   }, []);
 
   const filterFunction = (value) => {
@@ -19,26 +19,25 @@ function Register() {
       return value;
     } else if (value.CRN.toLowerCase().includes(searchTerm.toLowerCase())) {
       return value;
-    } else if (
-      value.courseName.toLowerCase().includes(searchTerm.toLowerCase())
-    ) {
+    } else if (value.courseName.toLowerCase().includes(searchTerm.toLowerCase())) {
       return value;
     }
-  };
+  }
 
   const courseDescription = (
-    <div className="form">
+    <div className="course-list">
       <form>
-        <div className="input-container">
+        <div className="course-description">
+          <h2 className="course-description-title">Course Decription</h2>
           <label>Username</label>
           <input type="text" name="username" required />
         </div>
-        <div className="input-container">
+        <div className="course-description">
           <label>Password</label>
           <input type="password" name="password" required />
         </div>
         <div className="button-container">
-          <button>Submit</button>
+          <button>Add Course</button>
         </div>
       </form>
     </div>
@@ -47,25 +46,27 @@ function Register() {
   const defaultForm = (
     <div className="deafult-form-container">
       <img
-      className="register-image"
-      src="/images/SMS-Register.jpeg" 
-      alt="Logan Hall on Penn Campus" />
+        className="register-image"
+        src="/images/SMS-Register.jpg"
+        alt="Logan Hall on Penn Campus"
+      />
     </div>
   );
 
   return (
     <div className="register_container">
       <NavBar />
-      <div className="form">{form ? courseDescription : defaultForm};</div>
-      <input
-          className="search-bar"
+      {form ? courseDescription : defaultForm}
+      <div className="courses">
+        <h2 className="course-search-title">Search Courses</h2>
+        <input
+          className="search-course"
           type="text"
           placeholder="Search Courses..."
           onChange={(event) => {
-            setSearchTerm(event.target.value);
+            setSearchTerm(event.target.value)
           }}
         />
-      <div className="courses">
         {courseList.filter(filterFunction).map((value, key) => {
           return (
             <div className="course">
@@ -73,11 +74,11 @@ function Register() {
                 {value.CRN} {value.courseName}
               </button>
             </div>
-          );
+          )
         })}
       </div>
     </div>
-  );
+  )
 }
 
 export default Register;

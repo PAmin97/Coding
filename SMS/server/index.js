@@ -9,6 +9,8 @@ app.use(cors());
 //Routers
 const courseRouter = require('./routes/manageCourses');
 app.use("/manageCourses", courseRouter);
+const courseInfoRouter = require('./routes/courseInfo');
+app.use("/courseInfo", courseInfoRouter);
 
 
 db.sequelize.sync().then(() => {
