@@ -2,24 +2,19 @@ import React, { useEffect, useState } from "react";
 import NavBar from "./NavBar";
 import axios from "axios";
 import "./Register.css";
-import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
   const [courseList, setCourseList] = useState([]);
-  const [courseInfoList, setCourseInfoList] = useState([]);
+  // const [courseInfoList, setCourseInfoList] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  let { CRN } = useParams();
+  let navigate = useNavigate();
+
   useEffect(() => {
     axios.get("http://localhost:3001/manageCourses").then((response) => {
       setCourseList(response.data);
     });
   }, []);
-
-useEffect(() => {
-    axios.get(`http://localhost:3001/courseInfo/${CRN}`).then((response) => {
-      setCourseInfoList(response.data);
-    });
-  });
 
   const filterFunction = (value) => {
     if (searchTerm === "") {
@@ -50,7 +45,7 @@ useEffect(() => {
         {courseList.filter(filterFunction).map((value, key) => {
           return (
             <div className="course">
-              <button className="openCourse">
+              <button className="openCourse" onClick={() => {navigate(`/course/${value.CRN}`)}}>
                 {value.CRN} {value.courseName}
               </button>
             </div>
