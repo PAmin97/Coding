@@ -8,16 +8,14 @@ function Register() {
   const [courseList, setCourseList] = useState([]);
   const [courseInfoList, setCourseInfoList] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [form, setForm] = useState(false);
   let { CRN } = useParams();
-
   useEffect(() => {
     axios.get("http://localhost:3001/manageCourses").then((response) => {
       setCourseList(response.data);
     });
   }, []);
 
-  useEffect(() => {
+useEffect(() => {
     axios.get(`http://localhost:3001/courseInfo/${CRN}`).then((response) => {
       setCourseInfoList(response.data);
     });
@@ -35,21 +33,10 @@ function Register() {
     }
   };
 
-  const courseDescription = <div className="course-list"></div>;
-
-  const defaultForm = (
-    <div className="deafult-form-container">
-      <img
-        className="register-image"
-        src="/images/SMS-Register.jpg"
-        alt="Logan Hall on Penn Campus"
-      />
-    </div>
-  );
-
   return (
     <div className="register_container">
       <NavBar />
+      <img classname='student-image' src='/images/SMS-Register.jpg' alt='Penn Campus'/>
       <div className="courses">
         <h2 className="course-search-title">Search Courses</h2>
         <input
@@ -63,37 +50,9 @@ function Register() {
         {courseList.filter(filterFunction).map((value, key) => {
           return (
             <div className="course">
-              <button className="openCourse" onClick={() => setForm(true)}>
+              <button className="openCourse">
                 {value.CRN} {value.courseName}
               </button>
-            </div>
-          );
-        })}
-      </div>
-      <div className="courseDescription">
-        {courseInfoList.map((courseInfo, key) => {
-          return (
-            <div>
-              {form ? (
-                <form>
-                  <div className="course-description">
-                    <h2 className="course-description-title">
-                      Course Decription
-                    </h2>
-                    {courseInfo.Description}
-                    <input type="text" name="username" required />
-                  </div>
-                  <div className="course-description">
-                    <label>Password</label>
-                    <input type="password" name="password" required />
-                  </div>
-                  <div className="button-container">
-                    <button>Add Course</button>
-                  </div>
-                </form>
-              ) : (
-                defaultForm
-              )}
             </div>
           );
         })}
