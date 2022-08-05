@@ -30,27 +30,29 @@ function Register() {
   return (
     <div className="register_container">
       <NavBar />
-      <img className='student-image' src='/images/SMS-Register.jpg' alt='Penn Campus'/>
-      <div className="courses">
-        <h2 className="course-search-title">Search Courses</h2>
-        <input
-          className="search-course"
-          type="text"
-          placeholder="Search Courses..."
-          onChange={(event) => {
-            setSearchTerm(event.target.value);
-          }}
-        />
-        {courseList.filter(filterFunction).map((value, key) => {
-          return (
-            <div className="course" key={key}>
-              <button className="openCourse" onClick={() => {navigate(`/course/${value.CRN}`)}}>
-                {value.CRN} {value.courseName}
-              </button>
-            </div>
-          );
-        })}
-      </div>
+      <h2 className="course-search-title">Find the courses you're looking for!</h2>
+      <input
+        className="search-course"
+        type="text"
+        placeholder="Search..."
+        onChange={(event) => {
+          setSearchTerm(event.target.value);
+        }}
+      />
+      {courseList.filter(filterFunction).map((value, key) => {
+        return (
+          <div className="course" key={key}>
+            <button
+              className="openCourse"
+              onClick={() => {
+                navigate(`/course/${value.CRN}`);
+              }}
+            >
+              {value.CRN} {value.courseName}
+            </button>
+          </div>
+        );
+      })}
     </div>
   );
 }
