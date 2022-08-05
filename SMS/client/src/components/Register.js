@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 
 function Register() {
   const [courseList, setCourseList] = useState([]);
-  // const [courseInfoList, setCourseInfoList] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   let navigate = useNavigate();
 
@@ -31,7 +30,7 @@ function Register() {
   return (
     <div className="register_container">
       <NavBar />
-      <img classname='student-image' src='/images/SMS-Register.jpg' alt='Penn Campus'/>
+      <img className='student-image' src='/images/SMS-Register.jpg' alt='Penn Campus'/>
       <div className="courses">
         <h2 className="course-search-title">Search Courses</h2>
         <input
@@ -44,7 +43,7 @@ function Register() {
         />
         {courseList.filter(filterFunction).map((value, key) => {
           return (
-            <div className="course">
+            <div className="course" key={key}>
               <button className="openCourse" onClick={() => {navigate(`/course/${value.CRN}`)}}>
                 {value.CRN} {value.courseName}
               </button>

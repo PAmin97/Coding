@@ -7,6 +7,12 @@ router.get('/', async (req, res) => {
     res.json(listOfCourses);
 });
 
+router.get('/byCRN/:courseID', async (req, res) => {
+    const courseID = req.params.courseID;
+    const course = await Courses.findAll({where: {CRN: courseID}});
+    res.json(course);
+})
+
 router.post('/', async (req, res) => {
     const course = req.body;
     await Courses.create(course);
