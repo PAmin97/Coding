@@ -7,8 +7,8 @@
     filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017));
     border-radius: 10px;
     overflow: hidden;
-    text-decoration: none;
     margin: 10px -1px;
+    text-align: center;
 }
 
 .openCourse:hover {
@@ -22,6 +22,7 @@
 
 .course-search-title {
     text-align: center;
+    color: #fff;
     background: #990000;
     margin-top: 0.5rem;
     margin-left: -1rem;

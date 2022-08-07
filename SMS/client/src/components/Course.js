@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import NavBar from "./NavBar";
+import "./Course.css";
 
 function Course() {
   let { CRN } = useParams();
@@ -18,25 +19,29 @@ function Course() {
       .then((response) => {
         setExtraInfo(response.data);
       });
-  }, []);
+  }, [CRN]);
 
   return (
-    course.length > 0 && (
+    course.length > 0 &&
+    extraInfo.length > 0 && (
       <div className="course-container">
         <NavBar />
         <div className="top">
-          <div className="course-info">
-            <div className="course-crn">{extraInfo[0].CRN}</div>
-            <div className="course-name">{extraInfo[0].courseName}</div>
+          <h2 className="course-info-title">Course Information</h2>
+          <h3 className="course-info">
+            {extraInfo[0].CRN} {extraInfo[0].courseName}
+          </h3>
+          <div className="extra-course-info">
+            <div>Meeting Days: {extraInfo[0].days}</div>
+            <div>Start Time: {extraInfo[0].startTime}</div>
+            <div>End Time: {extraInfo[0].endTime}</div>
+            <div>Credit: 1</div>
+            <div>Current Capacity: {course[0].currentCapacity}</div>
+            <div>Max Capacity: {extraInfo[0].capacity}</div>
           </div>
-          <div className="course-days">Meeting Days: {extraInfo[0].days}</div>
-          <div className="course-st">Start Time: {extraInfo[0].startTime}</div>
-          <div className="course-et">End Time: {extraInfo[0].endTime}</div>
-          <div className="course-credits">Credit: 1</div>
-          <div className="course-capacity">Current Capacity: {course[0].currentCapacity}</div>
-          <div className="course-capacity">Max Capacity: {extraInfo[0].capacity}</div>
         </div>
         <div className="middle">
+          <h2 className="course-description-title">Course Description</h2>
           <div className="course-descrption">{course[0].Description}</div>
         </div>
         <div className="bottom">

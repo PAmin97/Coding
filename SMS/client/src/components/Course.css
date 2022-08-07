@@ -1,0 +1,35 @@
+.course-container {
+   display: block;
+   text-align: center;
+}
+
+.course-info-title {
+    text-align: center;
+    color: #fff;
+    background: #990000;
+    margin-top: 0.5rem;
+    margin-left: -1rem;
+    margin-right: -1rem;
+    font-size: 30px;
+}
+
+.course-info {
+    margin-top: -22px;
+}
+
+.extra-course-info {
+    margin-top: -15px;
+}
+
+
+
+
+.course-description-title {
+    text-align: center;
+    color: #fff;
+    background: #990000;
+    margin-top: 0.5rem;
+    margin-left: -1rem;
+    margin-right: -1rem;
+    font-size: 30px;
+}
