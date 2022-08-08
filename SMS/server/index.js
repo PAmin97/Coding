@@ -11,6 +11,8 @@ const courseRouter = require('./routes/manageCourses');
 app.use("/manageCourses", courseRouter);
 const courseInfoRouter = require('./routes/courseInfo');
 app.use("/courseInfo", courseInfoRouter);
+const studentsRouter = require('./routes/Students');
+app.use("/auth", studentsRouter);
 
 
 db.sequelize.sync().then(() => {
