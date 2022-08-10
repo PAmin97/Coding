@@ -12,9 +12,9 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route path='/' exact element={<Login/>}></Route>
+          <Route path='/' exact element={<Students/>}></Route>
           <Route path="/create-account" exact element={<Registration/>}></Route>
-          <Route path="/students" exact element={<Students/>}/>
+          <Route path="/login" exact element={<Login/>}/>
           <Route path="/support" exact element={<Support/>}/>
           <Route path="/register" exact element={<Register/>}/>
           <Route path="/course/:CRN" exact element={<Course/>}/>
