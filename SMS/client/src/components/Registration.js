@@ -1,17 +1,69 @@
 import React from "react";
-import {Formik, Form, Field, ErrorMessage} from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
+import axios from "axios";
+import "./Registration.css";
 
 function Registration() {
-    return <div className="account-creation-container">
-        <Formik>
-            <Form>
-                
-            </Form>
-        </Formik>
+  const initialValues = {
+    username: "",
+    password: "",
+  };
+
+  const validation = Yup.object().shape({
+    username: Yup.string().min(3).max(15).required(),
+    password: Yup.string().min(4).max(20).required(),
+  });
+
+  const handleSubmit = (data) => {
+    axios.post("http://localhost:3001/auth", data).then(() => {
+      console.log(data);
+    });
+  };
+
+  return (
+    <div className="account-creation-container">
+      <Formik
+        initialValues={initialValues}
+        onSubmit={handleSubmit}
+        validationSchema={validation}
+      >
+        <Form className="login-form">
+          <h1>Create Your Account</h1>
+          <label>Username: </label>
+          <ErrorMessage
+            className="errormessage"
+            name="username"
+            component="span"
+          />
+          <Field
+            className="input-container"
+            autocomplete="off"
+            id="input"
+            name="username"
+            placeholder="(Ex. student1...)"
+          />
+
+          <label>Password: </label>
+          <ErrorMessage
+            className="errormessage"
+            name="password"
+            component="span"
+          />
+          <Field
+            className="input-container"
+            autocomplete="off"
+            type="password"
+            id="input"
+            name="password"
+            placeholder="(Ex. pass123...)"
+          />
+
+          <button type="submit">Create Account</button>
+        </Form>
+      </Formik>
     </div>
-
-
-
+  );
 }
 
 export default Registration;
