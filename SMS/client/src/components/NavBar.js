@@ -27,18 +27,27 @@ function NavBar() {
     <>
       <nav className="navbar">
         <div className="navbar-container">
-          <Link to="/students" className="navbar-logo" onClick={closeMobileMenu}>
-            Penn SMS 
-            <img className="penn-logo" src="/images/PennLogo.jpg" alt="Penn Logo" />
+          <Link
+            to="/students"
+            className="navbar-logo"
+            onClick={closeMobileMenu}
+          >
+            Penn SMS
+            <img
+              className="penn-logo"
+              src="/images/PennLogo.jpg"
+              alt="Penn Logo"
+            />
           </Link>
           <div className="menu-icon" onClick={handleClick}>
             <i className={click ? "fas fa-times" : "fas fa-bars"} />
           </div>
           <ul className={click ? "nav-menu active" : "nav-menu"}>
             <li className="nav-item">
-              <Link to="/students" 
-              className="nav-links" 
-              onClick={closeMobileMenu}
+              <Link
+                to="/students"
+                className="nav-links"
+                onClick={closeMobileMenu}
               >
                 Home
               </Link>
@@ -63,15 +72,19 @@ function NavBar() {
             </li>
             <li className="nav-item">
               <Link
-                to="/"
+                to="/login"
                 className="nav-links-mobile"
                 onClick={closeMobileMenu}
               >
-                Log Out
+                Log In
               </Link>
             </li>
           </ul>
-          {button && <Link to='/'><button buttonstyle="btn--outline">Log Out</button></Link>}
+          {button && (
+            <Link to="/login" className="nav-links">
+              Log In
+            </Link>
+          )}
         </div>
       </nav>
     </>

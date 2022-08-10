@@ -38,8 +38,8 @@ function Registration() {
           />
           <Field
             className="input-container"
-            autocomplete="off"
-            id="input"
+            autoComplete="off"
+            id="input-username"
             name="username"
             placeholder="(Ex. student1...)"
           />
@@ -52,9 +52,9 @@ function Registration() {
           />
           <Field
             className="input-container"
-            autocomplete="off"
+            autoComplete="off"
             type="password"
-            id="input"
+            id="input-passwordß"
             name="password"
             placeholder="(Ex. pass123...)"
           />

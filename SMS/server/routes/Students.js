@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const { Students } = require("../models");
 const bcrypt = require("bcrypt");
-const { sign } = require("jsonwebtoken");
 
 router.post("/", async (req, res) => {
   const { username, password } = req.body;
@@ -24,13 +23,7 @@ router.post("/login", async (req, res) => {
   bcrypt.compare(password, student.password).then((match) => {
     if (!match) return res.json({ error: "Incorrect Username or Password" });
 
-    // generate a token for each user that logs in
-    const accessToken = sign(
-      {username: student.username, id: student.id},
-      "importantsecret"
-    );
-
-    return res.json(accessToken);
+    return res.json("Login Successful");
   });
 });
 

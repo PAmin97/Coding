@@ -9,7 +9,7 @@ export default function Students() {
     return (
         <div className='cards'>
             <NavBar/>
-            <img classname='student-image' src='/images/SMS-Students.jpg' alt='Penn Campus'/>
+            <img className='student-image' src='/images/SMS-Students.jpg' alt='Penn Campus'/>
             <h1 className='student-title'>Student Page</h1>
             <div className='cards__container'>
                 <div className='cards__wrapper'>
