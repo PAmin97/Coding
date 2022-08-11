@@ -59,7 +59,7 @@ function Footer() {
               target="_blank"
               aria-label="Youtube"
             >
-              <i class="fab fa-youtube" />
+              <i className="fab fa-youtube" />
             </Link>
             <Link
               className="social-icon-link twitter"
