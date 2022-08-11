@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Login.css";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -12,8 +12,12 @@ function Login() {
   const login = () => {
     const data = { username: username, password: password };
     axios.post("http://localhost:3001/auth/login", data).then((response) => {
-      console.log(response.data);
-      navigate("/");
+      if (response.data.error) {
+        alert(response.data.error);
+      } else {
+        localStorage.setItem("accessToken", response.data);
+        navigate("/");
+      }
     });
   };
 
@@ -42,6 +46,9 @@ function Login() {
         </div>
         <div className="button-container">
           <button onClick={login}> Login </button>
+        </div>
+        <div className="create-account-container">
+          <Link to="/create-account">Create an Account</Link>  
         </div>
       </div>
     </div>

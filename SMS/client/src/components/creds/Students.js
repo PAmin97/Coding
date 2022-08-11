@@ -10,7 +10,6 @@ export default function Students() {
         <div className='cards'>
             <NavBar/>
             <img className='student-image' src='/images/SMS-Students.jpg' alt='Penn Campus'/>
-            <h1 className='student-title'>Student Page</h1>
             <div className='cards__container'>
                 <div className='cards__wrapper'>
                     <ul className='cards__items'>

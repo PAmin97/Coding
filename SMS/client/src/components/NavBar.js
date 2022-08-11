@@ -5,6 +5,7 @@ import "./NavBar.css";
 function NavBar() {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
+  const [log, setLog] = useState(true);
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
@@ -16,6 +17,11 @@ function NavBar() {
       setButton(true);
     }
   };
+
+  const logout = () => {
+    localStorage.removeItem("accessToken");
+    setLog(false);
+  }
 
   useEffect(() => {
     showButton();
@@ -80,10 +86,16 @@ function NavBar() {
               </Link>
             </li>
           </ul>
-          {button && (
+          {button && !log && !localStorage.getItem("accessToken") ? (
             <Link to="/login" className="nav-links">
-              Log In
+              Login
             </Link>
+          ) : (
+            button && log && (
+              <Link to="/" className="nav-links" onClick={logout}>
+                Logout
+              </Link>
+            )
           )}
         </div>
       </nav>
