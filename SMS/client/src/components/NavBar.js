@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./NavBar.css";
+import axios from "axios";
+import { AuthContext } from "../helpers/AuthContext";
 
 function NavBar() {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
-  const [log, setLog] = useState(true);
+  const [authenticate, setAuthenticate] = useState({
+    username: "",
+    id: 0,
+    log: false,
+  });
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
@@ -20,85 +26,109 @@ function NavBar() {
 
   const logout = () => {
     localStorage.removeItem("accessToken");
-    setLog(false);
-  }
+    setAuthenticate({ ...authenticate, log: false });
+  };
 
   useEffect(() => {
     showButton();
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:3001/auth/validate", {
+        headers: {
+          accessToken: localStorage.getItem("accessToken"),
+        },
+      })
+      .then((response) => {
+        if (response.data.error) {
+          setAuthenticate({ ...authenticate, log: false });
+        } else {
+          setAuthenticate({
+            username: response.data.username,
+            id: response.data.id,
+            log: true,
+          });
+        }
+      });
   }, []);
 
   window.addEventListener("resize", showButton);
 
   return (
     <>
-      <nav className="navbar">
-        <div className="navbar-container">
-          <Link
-            to="/students"
-            className="navbar-logo"
-            onClick={closeMobileMenu}
-          >
-            Penn SMS
-            <img
-              className="penn-logo"
-              src="/images/PennLogo.jpg"
-              alt="Penn Logo"
-            />
-          </Link>
-          <div className="menu-icon" onClick={handleClick}>
-            <i className={click ? "fas fa-times" : "fas fa-bars"} />
-          </div>
-          <ul className={click ? "nav-menu active" : "nav-menu"}>
-            <li className="nav-item">
-              <Link
-                to="/students"
-                className="nav-links"
-                onClick={closeMobileMenu}
-              >
-                Home
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                to="/support"
-                className="nav-links"
-                onClick={closeMobileMenu}
-              >
-                Contact Us
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                to="/my-profile"
-                className="nav-links"
-                onClick={closeMobileMenu}
-              >
-                My Profile
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                to="/login"
-                className="nav-links-mobile"
-                onClick={closeMobileMenu}
-              >
-                Log In
-              </Link>
-            </li>
-          </ul>
-          {button && !log && !localStorage.getItem("accessToken") ? (
-            <Link to="/login" className="nav-links">
-              Login
+      <AuthContext.Provider value={{ authenticate, setAuthenticate }}>
+        <nav className="navbar">
+          <div className="navbar-container">
+            <Link
+              to="/students"
+              className="navbar-logo"
+              onClick={closeMobileMenu}
+            >
+              Penn SMS
+              <img
+                className="penn-logo"
+                src="/images/PennLogo.jpg"
+                alt="Penn Logo"
+              />
             </Link>
-          ) : (
-            button && log && (
-              <Link to="/" className="nav-links" onClick={logout}>
-                Logout
+            <div className="menu-icon" onClick={handleClick}>
+              <i className={click ? "fas fa-times" : "fas fa-bars"} />
+            </div>
+            <ul className={click ? "nav-menu active" : "nav-menu"}>
+              <li className="nav-item">
+                <Link
+                  to="/students"
+                  className="nav-links"
+                  onClick={closeMobileMenu}
+                >
+                  Home
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
+                  to="/support"
+                  className="nav-links"
+                  onClick={closeMobileMenu}
+                >
+                  Contact Us
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
+                  to="/my-profile"
+                  className="nav-links"
+                  onClick={closeMobileMenu}
+                >
+                  My Profile
+                </Link>
+                <h1>{authenticate.username}</h1>
+              </li>
+              <li className="nav-item">
+                <Link
+                  to="/login"
+                  className="nav-links-mobile"
+                  onClick={closeMobileMenu}
+                >
+                  Log In
+                </Link>
+              </li>
+            </ul>
+            {button && !authenticate.log && !localStorage.getItem("accessToken") ? (
+              <Link to="/login" className="nav-links">
+                Login
               </Link>
-            )
-          )}
-        </div>
-      </nav>
+            ) : (
+              button &&
+              authenticate.log && (
+                <Link to="/" className="nav-links" onClick={logout}>
+                  Logout
+                </Link>
+              )
+            )}
+          </div>
+        </nav>
+      </AuthContext.Provider>
     </>
   );
 }

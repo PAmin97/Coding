@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./Login.css";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../helpers/AuthContext";
 
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const { setAuthenticate } = useContext(AuthContext);
 
   let navigate = useNavigate();
 
@@ -16,6 +18,11 @@ function Login() {
         alert(response.data.error);
       } else {
         localStorage.setItem("accessToken", response.data);
+        setAuthenticate({
+          username: response.data.username,
+          id: response.data.id,
+          log: true,
+        });
         navigate("/");
       }
     });
@@ -48,7 +55,7 @@ function Login() {
           <button onClick={login}> Login </button>
         </div>
         <div className="create-account-container">
-          <Link to="/create-account">Create an Account</Link>  
+          <Link to="/create-account">Create an Account</Link>
         </div>
       </div>
     </div>
