@@ -2,12 +2,16 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./NavBar.css";
 import axios from "axios";
-// import { AuthContext } from "../helpers/AuthContext";
+import { AuthContext } from "../helpers/AuthContext";
 
 function NavBar() {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
-  const [authenticate, setAuthenticate] = useState(false);
+  const [authenticate, setAuthenticate] = useState({
+    username: "",
+    id: 0,
+    log: false,
+  });
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
@@ -22,7 +26,11 @@ function NavBar() {
 
   const logout = () => {
     localStorage.removeItem("accessToken");
-    setAuthenticate(false);
+    setAuthenticate({
+      username: "",
+      id: 0,
+      log: false,
+    });
   };
 
   useEffect(() => {
@@ -38,9 +46,16 @@ function NavBar() {
       })
       .then((response) => {
         if (response.data.error) {
-          setAuthenticate(false);
+          setAuthenticate({
+            ...authenticate,
+            log: false,
+          });
         } else {
-          setAuthenticate(true);
+          setAuthenticate({
+            username: response.data.username,
+            id: response.data.id,
+            log: true,
+          });
         }
       });
   }, []);
@@ -94,7 +109,6 @@ function NavBar() {
               >
                 My Profile
               </Link>
-              <h1>{authenticate.username}</h1>
             </li>
             <li className="nav-item">
               <Link
@@ -106,18 +120,19 @@ function NavBar() {
               </Link>
             </li>
           </ul>
-          {button && !authenticate ? (
+          {button && !authenticate.log ? (
             <Link to="/login" className="nav-links">
               Login
             </Link>
           ) : (
             button &&
-            authenticate && (
+            authenticate.log && (
               <Link to="/" className="nav-links" onClick={logout}>
                 Logout
               </Link>
             )
           )}
+          <h1>{authenticate.username}</h1>
         </div>
       </nav>
       {/* </AuthContext.Provider> */}

@@ -34,7 +34,6 @@ router.post("/login", async (req, res) => {
 });
 
 router.get("/validate", validateToken, (req, res) => {
-  console.log(res.json());
   res.json(req.student);
 });
 
