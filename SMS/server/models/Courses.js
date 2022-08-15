@@ -30,5 +30,11 @@ module.exports = (sequelize, DataTypes) => {
         }
     });
 
+    Courses.associate = (models) => {
+        Courses.hasMany(models.addCourse, {
+            onDelete: "cascade",
+        })
+    }
+
     return Courses
 }

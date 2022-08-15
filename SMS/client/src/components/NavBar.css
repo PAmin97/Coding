@@ -78,6 +78,15 @@
   .menu-icon {
     display: none;
   }
+
+  .student-name {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 0rem 0rem;
+    height: 100%;
+  }
   
   @media screen and (max-width: 960px) {
     .NavbarItems {

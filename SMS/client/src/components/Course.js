@@ -21,6 +21,18 @@ function Course() {
       });
   }, [CRN]);
 
+  const addACourse = (courseId) => {
+    axios
+      .post(
+        "http://localhost:3001/add",
+        { CourseId: courseId },
+        { headers: { accessToken: localStorage.getItem("accessToken") } }
+      )
+      .then((response) => {
+        alert(response.data);
+      });
+  };
+
   return (
     course.length > 0 &&
     extraInfo.length > 0 && (
@@ -46,6 +58,13 @@ function Course() {
         </div>
         <div className="bottom">
           <div className="course-professor">{extraInfo[0].professor}</div>
+          <button
+            onClick={() => {
+              addACourse(extraInfo[0].id);
+            }}
+          >
+            Add Course
+          </button>
         </div>
       </div>
     )
