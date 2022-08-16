@@ -8,6 +8,7 @@ function Course() {
   let { CRN } = useParams();
   const [course, setCourse] = useState({});
   const [extraInfo, setExtraInfo] = useState({});
+  const [addedCourse, setAddedCourse] = useState([]);
 
   useEffect(() => {
     axios.get(`http://localhost:3001/courseInfo/${CRN}`).then((response) => {
@@ -19,6 +20,14 @@ function Course() {
       .then((response) => {
         setExtraInfo(response.data);
       });
+
+    axios
+      .get("http://localhost:3001/manageCourses/courses", {
+        headers: { accessToken: localStorage.getItem("accessToken") },
+      })
+      .then((response) => {
+        setAddedCourse(response.data);
+      });
   }, [CRN]);
 
   const addACourse = (courseId) => {
@@ -29,6 +38,7 @@ function Course() {
         { headers: { accessToken: localStorage.getItem("accessToken") } }
       )
       .then((response) => {
+        // setAddedCourse(!addedCourse);
         alert(response.data);
       });
   };
@@ -58,6 +68,7 @@ function Course() {
         </div>
         <div className="bottom">
           <div className="course-professor">{extraInfo[0].professor}</div>
+          {/* {addedCourse ? ( */}
           <button
             onClick={() => {
               addACourse(extraInfo[0].id);
@@ -65,6 +76,16 @@ function Course() {
           >
             Add Course
           </button>
+          )
+          {/*: (
+            <button
+            onClick={() => {
+              addACourse(extraInfo[0].id);
+            }}
+          >
+            Remove Course
+          </button>
+          )} */}
         </div>
       </div>
     )
