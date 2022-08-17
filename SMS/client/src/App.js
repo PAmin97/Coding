@@ -5,6 +5,7 @@ import Students from './components/creds/Students';
 import Support from './components/Support';
 import Register from './components/Register';
 import Course from './components/Course';
+import MyCourses from './components/MyCourses';
 import Registration from './components/Registration';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path="/support" exact element={<Support/>}/>
           <Route path="/register" exact element={<Register/>}/>
           <Route path="/course/:CRN" exact element={<Course/>}/>
+          <Route path="/myCourses" exact element={<MyCourses/>}/>
         </Routes>
       </Router>
     </>

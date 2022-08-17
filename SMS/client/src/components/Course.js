@@ -76,8 +76,8 @@ function Course() {
           >
             Add Course
           </button>
-          )
-          {/*: (
+          {/* )
+          : (
             <button
             onClick={() => {
               addACourse(extraInfo[0].id);
