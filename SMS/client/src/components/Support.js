@@ -54,10 +54,10 @@ function Support() {
             />
           </div>
           <div className="support-description-container">
-            <input
+            <textarea
               required
               autoComplete="off"
-              type="text"
+              // type="text"
               name="description"
               placeholder="Description"
               className="support_description"

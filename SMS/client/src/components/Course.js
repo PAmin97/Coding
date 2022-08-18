@@ -54,11 +54,11 @@ function Course() {
             {extraInfo[0].CRN} {extraInfo[0].courseName}
           </h3>
           <div className="extra-course-info">
+            <div>Professor: {extraInfo[0].professor}</div>
             <div>Meeting Days: {extraInfo[0].days}</div>
             <div>Start Time: {extraInfo[0].startTime}</div>
             <div>End Time: {extraInfo[0].endTime}</div>
             <div>Credit: 1</div>
-            <div>Current Capacity: {course[0].currentCapacity}</div>
             <div>Max Capacity: {extraInfo[0].capacity}</div>
           </div>
         </div>
@@ -67,7 +67,6 @@ function Course() {
           <div className="course-descrption">{course[0].Description}</div>
         </div>
         <div className="bottom">
-          <div className="course-professor">{extraInfo[0].professor}</div>
           {/* {addedCourse ? ( */}
           <button
             onClick={() => {

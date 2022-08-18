@@ -1,6 +1,16 @@
+.support_const_info {
+    display: block;
+}
+
+
 .support_const_info h1 {
     text-align: center;
+    color: #fff;
     background: #990000;
+    margin-top: 0.5rem;
+    margin-left: -1rem;
+    margin-right: -1rem;
+    font-size: 30px;
 }
 
 .support_const_info td {
@@ -38,7 +48,7 @@
 .support_description {
     margin-top: 10px;
     min-height: 120px;
-    min-width: 500px;
+    min-width: 520px;
     overflow: auto;
     overflow-wrap: break-word;
 }

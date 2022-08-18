@@ -34,19 +34,18 @@
   
   .penn-logo {
     margin-left: -3.3rem;
-    object-fit: contain;
+    margin-top: 5px;
     width: 50px;
   }
   
   .nav-menu {
     display: grid;
-    grid-template-columns: repeat(4, auto);
+    grid-template-columns: repeat(5, auto);
     grid-gap: 10px;
     list-style: none;
     text-align: center;
-    width: 60vw;
+    width: 80vw;
     justify-content: end;
-    margin-right: 2rem;
   }
   
   .nav-item {
@@ -79,13 +78,11 @@
     display: none;
   }
 
-  .student-name {
+  .welcome-message {
     color: #fff;
     display: flex;
     align-items: center;
-    text-decoration: none;
-    padding: 0rem 0rem;
-    height: 100%;
+    padding-right: 275px;
   }
   
   @media screen and (max-width: 960px) {
