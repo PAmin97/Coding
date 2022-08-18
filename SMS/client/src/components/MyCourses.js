@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import NavBar from "./NavBar";
+import "./MyCourses.css";
 
 function MyCourses() {
   const [myCourses, setMyCourses] = useState([]);
@@ -11,7 +12,7 @@ function MyCourses() {
       if (f.id === course.CourseId) {
         return f.courseName;
       }
-      return 0
+      return 0;
     });
   };
 
@@ -30,11 +31,15 @@ function MyCourses() {
   }, []);
 
   return (
-    <div className="myCourses_container">
+    <div className="myCourses-container">
       <NavBar />
-      <div className="myCourses_list">
+      <div>
         {courseList.filter(res).map((course, key) => {
-          return <div key={key}>{course.courseName}</div>;
+          return (
+            <div className="myCourse-list" key={key}>
+              {course.courseName}
+            </div>
+          );
         })}
       </div>
     </div>

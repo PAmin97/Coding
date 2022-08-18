@@ -22,14 +22,14 @@ export default function Students() {
                 text="Registration"
                 path="/register"
                 src="/images/SMS-ViewCourses.jpg"
-                description="Add/Drop/View your courses"
+                description="Add/Drop/View all courses"
               />
 
               <CardItem
-                text="My Profile"
-                path="/my-profile"
+                text="My Courses"
+                path="/myCourses"
                 src="/images/SMS-Profile.jpg"
-                description="Update your contact information, submit your medical files"
+                description="View the courses you registered for"
               />
 
               <CardItem

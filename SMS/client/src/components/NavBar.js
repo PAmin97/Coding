@@ -98,11 +98,11 @@ function NavBar() {
             </li>
             <li className="nav-item">
               <Link
-                to="/my-profile"
+                to="/myCourses"
                 className="nav-links"
                 onClick={closeMobileMenu}
               >
-                My Profile
+                My Courses
               </Link>
             </li>
             <li className="nav-item">

@@ -15,6 +15,7 @@
 
 .support_const_info td {
     font-size: large;
+    display: table-cell;
     border-bottom: 1px dotted solid black;
 }
 
@@ -51,4 +52,20 @@
     min-width: 520px;
     overflow: auto;
     overflow-wrap: break-word;
+    border: 1px solid gray;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+td::after {
+    content: '';
+    display: block;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    width: 100%;
+    background: -webkit-gradient(linear,left top,right top,color-stop(17%,#44464b),color-stop(0,rgba(255,255,255,0)));
+    background: linear-gradient(to right,#44464b 17%,rgba(255,255,255,0) 0);
+    background-position: top;
+    background-size: 6px 1px;
+    background-repeat: repeat-x;
 }

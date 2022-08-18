@@ -11,12 +11,12 @@ function Support() {
         <table>
           <tbody>
             <tr>
-              <td>"Monday, Tuesday, Wednesday, Thursday"</td>
-              <td>"9am-5pm"</td>
+              <td>Monday, Tuesday, Wednesday, Thursday</td>
+              <td>9am-5pm</td>
             </tr>
             <tr>
-              <td>"Friday"</td>
-              <td>"10am-5pm"</td>
+              <td>Friday</td>
+              <td>10am-5pm</td>
             </tr>
           </tbody>
         </table>
@@ -24,12 +24,12 @@ function Support() {
         <table>
           <tbody>
             <tr>
-              <td>"Monday, Wednesday, Friday"</td>
-              <td>"9:15am-11:55pm; 1:15pm-4:55pm"</td>
+              <td>Monday, Wednesday, Friday</td>
+              <td>9:15am-11:55pm; 1:15pm-4:55pm</td>
             </tr>
             <tr>
-              <td>"Tuesday, Thursday"</td>
-              <td>"9am-5pm"</td>
+              <td>Tuesday, Thursday</td>
+              <td>9am-5pm</td>
             </tr>
           </tbody>
         </table>

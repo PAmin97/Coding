@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import NavBar from "./NavBar";
 import "./Course.css";
 
 function Course() {
   let { CRN } = useParams();
+  let navigate = useNavigate();
   const [course, setCourse] = useState({});
   const [extraInfo, setExtraInfo] = useState({});
   const [addedCourse, setAddedCourse] = useState([]);
@@ -31,16 +32,20 @@ function Course() {
   }, [CRN]);
 
   const addACourse = (courseId) => {
-    axios
-      .post(
-        "http://localhost:3001/add",
-        { CourseId: courseId },
-        { headers: { accessToken: localStorage.getItem("accessToken") } }
-      )
-      .then((response) => {
-        // setAddedCourse(!addedCourse);
-        alert(response.data);
-      });
+    if (!localStorage.getItem("accessToken")) {
+      navigate("/login");
+    } else {
+      axios
+        .post(
+          "http://localhost:3001/add",
+          { CourseId: courseId },
+          { headers: { accessToken: localStorage.getItem("accessToken") } }
+        )
+        .then((response) => {
+          // setAddedCourse(!addedCourse);
+          alert(response.data);
+        });
+    }
   };
 
   return (
