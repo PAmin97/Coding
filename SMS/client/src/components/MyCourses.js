@@ -5,7 +5,6 @@ import NavBar from "./NavBar";
 function MyCourses() {
   const [myCourses, setMyCourses] = useState([]);
   const [courseList, setCourseList] = useState([]);
-  //const [courses, setCourses] = useState([]);
 
   const res = (f) => {
     return myCourses.find((course) => {
