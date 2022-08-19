@@ -58,7 +58,7 @@ function NavBar() {
           });
         }
       });
-  }, [authenticate]);
+  }, []);
 
   window.addEventListener("resize", showButton);
 

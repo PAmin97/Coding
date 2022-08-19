@@ -21,7 +21,9 @@ function Course() {
       .then((response) => {
         setExtraInfo(response.data);
       });
+  }, [CRN]);
 
+  useEffect(() => {
     axios
       .get("http://localhost:3001/manageCourses/courses", {
         headers: { accessToken: localStorage.getItem("accessToken") },
@@ -29,7 +31,7 @@ function Course() {
       .then((response) => {
         setAddedCourse(response.data);
       });
-  }, [CRN]);
+  }, []);
 
   const addACourse = (courseId) => {
     if (!localStorage.getItem("accessToken")) {
@@ -46,6 +48,17 @@ function Course() {
           alert(response.data);
         });
     }
+  };
+
+  const foundId = (courseId) => {
+    addedCourse.some((course) => {
+      if (course.CourseId === courseId) {
+        console.log(course.CourseId === courseId);
+        return true;
+      } else {
+        return false;
+      }
+    });
   };
 
   return (
@@ -72,24 +85,23 @@ function Course() {
           <div className="course-descrption">{course[0].Description}</div>
         </div>
         <div className="bottom">
-          {/* {addedCourse ? ( */}
-          <button
-            onClick={() => {
-              addACourse(extraInfo[0].id);
-            }}
-          >
-            Add Course
-          </button>
-          {/* )
-          : (
+          {foundId(extraInfo[0].id) ? (
             <button
-            onClick={() => {
-              addACourse(extraInfo[0].id);
-            }}
-          >
-            Remove Course
-          </button>
-          )} */}
+              onClick={() => {
+                addACourse(extraInfo[0].id);
+              }}
+            >
+              Remove Course
+            </button>
+          ) : (
+            <button
+              onClick={() => {
+                addACourse(extraInfo[0].id);
+              }}
+            >
+              Add Course
+            </button>
+          )}
         </div>
       </div>
     )

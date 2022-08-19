@@ -8,7 +8,7 @@ function Support() {
       <NavBar />
       <div className="support_const_info">
         <h1>Student Service Center Drop-In Hours</h1>
-        <table>
+        <table className="drop-in-table">
           <tbody>
             <tr>
               <td>Monday, Tuesday, Wednesday, Thursday</td>
@@ -21,7 +21,7 @@ function Support() {
           </tbody>
         </table>
         <h1>Phone Hours</h1>
-        <table>
+        <table className="phone-table">
           <tbody>
             <tr>
               <td>Monday, Wednesday, Friday</td>

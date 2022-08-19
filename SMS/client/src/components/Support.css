@@ -27,6 +27,29 @@
     resize: vertical;
 }
 
+.drop-in-table {
+    margin-left: auto;
+    margin-right: auto;
+    border-spacing: 0;
+    width: 100%;
+    max-width: 785px;
+    margin-bottom: 25px;
+}
+
+.phone-table {
+    margin-left: auto;
+    margin-right: auto;
+    border-spacing: 0;
+    width: 100%;
+    max-width: 785px;
+    margin-bottom: 25px;
+}
+
+.support_const_info tbody {
+    display: table-row-group;
+    vertical-align: middle;
+}
+
 .support_email {
     min-width: 100px;
     min-height: 20px;

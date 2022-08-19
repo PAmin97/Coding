@@ -1,8 +1,8 @@
 import React from "react";
-import "../../App.css";
-import CardItem from "../CardItem";
-import Footer from "../Footer";
-import NavBar from "../NavBar";
+import "../App.css";
+import CardItem from "./CardItem";
+import Footer from "./Footer";
+import NavBar from "./NavBar";
 import "./Cards.css";
 
 export default function Students() {

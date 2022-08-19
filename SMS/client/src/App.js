@@ -1,7 +1,7 @@
 import './App.css';
 import Login from './components/Login';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-import Students from './components/creds/Students';
+import Students from './components/Students';
 import Support from './components/Support';
 import Register from './components/Register';
 import Course from './components/Course';
