@@ -1,4 +1,4 @@
-.account-creation-container {
+.Create-Account {
     background: rgb(2,0,36);
     background: linear-gradient(90deg, rgba(2,0,36,0.1195071778711485) 0%, rgba(12,9,121,1) 44%, rgba(255,0,0,0.6629245448179272) 100%);
     height: 100vh;
@@ -8,6 +8,10 @@
     justify-content: center;
     align-items: center;
     object-fit: contain;
+}
+
+.account-label {
+    margin-left: 15px;
 }
 
 .login-form {
@@ -20,9 +24,15 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
-    margin: 30px;
+    margin: 15px;
+    padding: 2px;
 }
 
 .errormessage {
     color: red;
+}
+
+.account-btn {
+    display: flex;
+    justify-content: center;
 }

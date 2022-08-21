@@ -51,7 +51,7 @@ function Course() {
   };
 
   const foundId = (courseId) => {
-    addedCourse.some((course) => {
+    Object.values(addedCourse).some((course) => {
       if (course.CourseId === courseId) {
         console.log(course.CourseId === courseId);
         return true;

@@ -22,7 +22,7 @@ function Registration() {
   };
 
   return (
-    <div className="account-creation-container">
+    <div className="Create-Account">
       <Formik
         initialValues={initialValues}
         onSubmit={handleSubmit}
@@ -30,7 +30,7 @@ function Registration() {
       >
         <Form className="login-form">
           <h1>Create Your Account</h1>
-          <label>Username: </label>
+          <label className="account-label">Username: </label>
           <ErrorMessage
             className="errormessage"
             name="username"
@@ -44,7 +44,7 @@ function Registration() {
             placeholder="(Ex. student1...)"
           />
 
-          <label>Password: </label>
+          <label className="account-label">Password: </label>
           <ErrorMessage
             className="errormessage"
             name="password"
@@ -59,7 +59,7 @@ function Registration() {
             placeholder="(Ex. pass123...)"
           />
 
-          <button type="submit">Create Account</button>
+          <button className="account-btn" type="submit">Create Account</button>
         </Form>
       </Formik>
     </div>
