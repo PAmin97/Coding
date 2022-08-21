@@ -19,7 +19,7 @@ export default function Students() {
           <div className="cards__wrapper">
             <ul className="cards__items">
               <CardItem
-                text="Registration"
+                text="Register"
                 path="/register"
                 src="/images/SMS-ViewCourses.jpg"
                 description="Add/Drop/View all courses"

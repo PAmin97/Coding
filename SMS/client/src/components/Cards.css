@@ -40,7 +40,7 @@
   .cards__item {
     display: flex;
     flex: 1;
-    margin: 0 4rem;
+    margin: 0 1rem;
     border-radius: 10px;
   }
   
@@ -57,9 +57,9 @@
   }
   
   .cards__item__pic-wrap {
-    position: relative;
+    /* position: relative; */
     width: 100%;
-    padding-top: 55%;
+    padding-top: 67%;
     overflow: hidden;
   }
   
@@ -69,7 +69,7 @@
   }
   
   .cards__item__img {
-    position: fixed;
+    position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
