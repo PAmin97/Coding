@@ -3,8 +3,11 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import "./Registration.css";
+import { useNavigate } from "react-router-dom";
 
 function Registration() {
+  let navigate = useNavigate();
+
   const initialValues = {
     username: "",
     password: "",
@@ -18,18 +21,20 @@ function Registration() {
   const handleSubmit = (data) => {
     axios.post("http://localhost:3001/auth", data).then(() => {
       console.log(data);
+      navigate("/login");
     });
   };
 
   return (
     <div className="Create-Account">
+      <img src="/images/SMS-Students.jpg" alt="Penn Campus"/>
       <Formik
         initialValues={initialValues}
         onSubmit={handleSubmit}
         validationSchema={validation}
       >
         <Form className="login-form">
-          <h1>Create Your Account</h1>
+          <h2>Create Your Account</h2>
           <label className="account-label">Username: </label>
           <ErrorMessage
             className="errormessage"
