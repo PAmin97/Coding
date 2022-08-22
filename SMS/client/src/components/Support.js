@@ -38,7 +38,7 @@ function Support() {
           <input
             required
             autoComplete="off"
-            type="email"
+            type="text"
             name="email"
             placeholder="Your email"
             className="support-email"

@@ -21,7 +21,7 @@
 
 .support_const_info input {
     min-width: 500px;
-    padding: 12px;
+    padding: 3px;
     border: 1px solid #ccc;
     border-radius: 4px;
     resize: vertical;
@@ -70,6 +70,7 @@
 }
 
 .support_description {
+    padding: 3px;
     margin-top: 10px;
     min-height: 120px;
     min-width: 520px;
